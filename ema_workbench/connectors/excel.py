@@ -75,7 +75,7 @@ class BaseExcelModel(FileModel):
     def __init__(
         self, name, wd=None, model_file=None, default_sheet=None, pointers=None
     ):
-        super(BaseExcelModel, self).__init__(name, wd=wd, model_file=model_file)
+        super().__init__(name, wd=wd, model_file=model_file)
         #: Reference to the Excel application. This attribute is `None` until
         #: model_init has been invoked.
         self.xl = None
@@ -113,7 +113,7 @@ class BaseExcelModel(FileModel):
                  arguments.
 
         """
-        super(BaseExcelModel, self).model_init(policy)
+        super().model_init(policy)
 
         if not self.xl:
             try:

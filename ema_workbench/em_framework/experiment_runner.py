@@ -13,7 +13,7 @@ __all__ = ["ExperimentRunner"]
 _logger = get_module_logger(__name__)
 
 
-class ExperimentRunner(object):
+class ExperimentRunner:
     """Helper class for running the experiments
 
     This class contains the logic for initializing models properly,
@@ -106,9 +106,7 @@ class ExperimentRunner(object):
 
             errortype = type(e).__name__
             raise EMAError(
-                (
                     f"exception in run_model\nCaused by: {errortype}: {str(e)}"
-                )
             )
 
         outcomes = model.outcomes_output
