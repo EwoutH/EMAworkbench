@@ -89,7 +89,7 @@ class SimioModel(FileModel, SingleReplication):
 
         """
         super().__init__(name, wd=wd, model_file=model_file)
-        assert main_model != None
+        assert main_model is not None
         self.main_model_name = main_model
         self.output = {}
         self.n_replications = n_replications

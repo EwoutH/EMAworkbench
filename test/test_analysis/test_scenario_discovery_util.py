@@ -163,14 +163,14 @@ class ScenarioDiscoveryUtilTestCase(unittest.TestCase):
         # all dimensions different
         a = np.array([(0, 1), (0, 1)], dtype=[("a", np.float), ("b", np.float)])
         b = np.array([(1, 1), (0, 0)], dtype=[("a", np.float), ("b", np.float)])
-        test = sdutil._compare(a, b) == False
+        test = sdutil._compare(a, b) is False
         self.assertTrue(np.all(test))
 
         # dimensions 1 different and dimension 2 the same
         a = np.array([(0, 1), (0, 1)], dtype=[("a", np.float), ("b", np.float)])
         b = np.array([(1, 1), (0, 1)], dtype=[("a", np.float), ("b", np.float)])
         test = sdutil._compare(a, b)
-        test = (test[0] == False) & (test[1] == True)
+        test = (test[0] is False) & (test[1] is True)
         self.assertTrue(test)
 
     def test_plot_box(self):
