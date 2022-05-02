@@ -14,7 +14,6 @@ Typically, the dll can be found in ../AppData/Local/Vensim/vendll32.dll
 """
 import ctypes
 import struct
-import sys
 
 import numpy as np
 

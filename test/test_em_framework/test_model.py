@@ -16,7 +16,7 @@ from ema_workbench.em_framework.parameters import (
 )
 from ema_workbench.em_framework.points import Scenario, Policy
 from ema_workbench.util import EMAError
-from ema_workbench.em_framework.outcomes import ScalarOutcome, ArrayOutcome
+from ema_workbench.em_framework.outcomes import ArrayOutcome
 
 
 class FileModelTest(FileModel):

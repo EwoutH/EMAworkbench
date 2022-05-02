@@ -6,8 +6,6 @@ Created on 16 Mar 2019
 import unittest
 
 import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
 
 from ema_workbench.analysis import logistic_regression as lr
 from test import utilities
