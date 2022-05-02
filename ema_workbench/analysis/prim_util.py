@@ -42,8 +42,10 @@ def get_quantile(data, quantile):
                the desired quantile
 
     """
-    assert quantile > 0
-    assert quantile < 1
+    if quantile <= 0:
+        raise AssertionError
+    if quantile >= 1:
+        raise AssertionError
 
     data = np.sort(data)
 

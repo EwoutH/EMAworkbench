@@ -115,14 +115,18 @@ class Problem(PlatypusProblem):
 
         super().__init__(len(parameters), len(outcome_names), nconstrs=len(constraints))
         #         assert len(parameters) == len(parameter_names)
-        assert searchover in ("levers", "uncertainties", "robust")
+        if searchover not in ("levers", "uncertainties", "robust"):
+            raise AssertionError
 
         if searchover == "levers":
-            assert not reference or isinstance(reference, Scenario)
+            if not (not reference or isinstance(reference, Scenario)):
+                raise AssertionError
         elif searchover == "uncertainties":
-            assert not reference or isinstance(reference, Policy)
+            if not (not reference or isinstance(reference, Policy)):
+                raise AssertionError
         else:
-            assert not reference
+            if reference:
+                raise AssertionError
 
         self.searchover = searchover
         self.parameters = parameters
@@ -140,7 +144,8 @@ class RobustProblem(Problem):
         self, parameters, outcome_names, scenarios, robustness_functions, constraints
     ):
         super().__init__("robust", parameters, outcome_names, constraints)
-        assert len(robustness_functions) == len(outcome_names)
+        if len(robustness_functions) != len(outcome_names):
+            raise AssertionError
         self.scenarios = scenarios
         self.robustness_functions = robustness_functions
 
@@ -604,7 +609,8 @@ class Convergence(ProgressTrackingMixIn):
         self.logging_freq = logging_freq
 
         for metric in metrics:
-            assert isinstance(metric, AbstractConvergenceMetric)
+            if not isinstance(metric, AbstractConvergenceMetric):
+                raise AssertionError
             metric.reset()
 
     def __call__(

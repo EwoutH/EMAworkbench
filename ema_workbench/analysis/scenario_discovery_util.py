@@ -278,7 +278,8 @@ def _setup(results, classify, incl_unc=[]):
     else:
         raise TypeError("unknown type for classify")
 
-    assert y.ndim == 1
+    if y.ndim != 1:
+        raise AssertionError
 
     return x, y, mode
 
