@@ -166,6 +166,6 @@ if __name__ == "__main__":
         evaluator.optimize(
             searchover="levers",
             nfe=100000,
-            epsilons=[0.1,] * len(lake_model.outcomes),
+            epsilons=[0.1] * len(lake_model.outcomes),
             reference=reference,
         )

@@ -38,7 +38,7 @@ def lake_problem(
     try:
         decisions = [kwargs[str(i)] for i in range(100)]
     except KeyError:
-        decisions = [0,] * 100
+        decisions = [0] * 100
 
     Pcrit = brentq(lambda x: x ** q / (1 + x ** q) - b * x, 0.01, 1.5)
     nvars = len(decisions)

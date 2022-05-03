@@ -411,7 +411,7 @@ class PrimTestCase(unittest.TestCase):
             list(
                 zip(
                     np.random.rand(10,),
-                    ["a", "b", "a", "b", "a", "a", "b", "a", "b", "a",],
+                    ["a", "b", "a", "b", "a", "a", "b", "a", "b", "a"],
                 )
             ),
             columns=["a", "b"],
@@ -492,7 +492,7 @@ class PrimTestCase(unittest.TestCase):
         classify = "y"
 
         prim_obj = prim.setup_prim(results, classify, threshold=0.8)
-        box_lims = pd.DataFrame([(0, {"a",},), (1, {"a",},),], columns=x.columns,)
+        box_lims = pd.DataFrame([(0, {"a",},), (1, {"a",},)], columns=x.columns,)
 
         yi = np.where(x.loc[:, "b"] == "a")
 

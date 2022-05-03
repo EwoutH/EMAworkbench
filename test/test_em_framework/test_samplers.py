@@ -110,9 +110,9 @@ class SamplerTestCase(unittest.TestCase):
     #     function = mock.Mock()
     #     model = Model("A", function)
     #     model.uncertainties = [RealParameter('a', 0, 1),
-    #                            RealParameter('c', 0, 1),]
+    #                            RealParameter('c', 0, 1)]
     #     model.levers = [RealParameter('b', 0, 1),
-    #                     RealParameter('d', 0, 1),]
+    #                     RealParameter('d', 0, 1)]
     #
     #     designs = sample_jointly(model, 10)
     #     self.assertEqual(designs.n, 10)

@@ -185,6 +185,6 @@ if __name__ == "__main__":
             robustnes_functions,
             scenarios,
             nfe=nfe,
-            epsilons=[0.1,] * len(robustnes_functions),
+            epsilons=[0.1] * len(robustnes_functions),
             population_size=5,
         )
