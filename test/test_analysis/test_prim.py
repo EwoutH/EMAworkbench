@@ -349,9 +349,7 @@ class PrimTestCase(unittest.TestCase):
         self.assertEqual(after_find, prim_obj.y.shape[0])
 
     def test_discrete_peel(self):
-        x = pd.DataFrame(
-            np.random.randint(0, 10, size=(100), dtype=int), columns=["a"]
-        )
+        x = pd.DataFrame(np.random.randint(0, 10, size=(100), dtype=int), columns=["a"])
         y = np.zeros(100)
         y[x.a > 5] = 1
 
@@ -439,11 +437,11 @@ class PrimTestCase(unittest.TestCase):
             self.assertEqual(len(pl[0]), 1)
             self.assertEqual(len(pl[1]), 1)
 
-        a = ("a")
-        b = ("b")
+        a = "a"
+        b = "b"
         x = pd.DataFrame(
             list(zip(np.random.rand(10), [a, b, a, b, a, a, b, a, b, a])),
-            columns=["a", "b"]
+            columns=["a", "b"],
         )
 
         y = np.random.randint(0, 2, (10))
@@ -492,7 +490,23 @@ class PrimTestCase(unittest.TestCase):
         classify = "y"
 
         prim_obj = prim.setup_prim(results, classify, threshold=0.8)
-        box_lims = pd.DataFrame([(0, {"a",}), (1, {"a",})], columns=x.columns)
+        box_lims = pd.DataFrame(
+            [
+                (
+                    0,
+                    {
+                        "a",
+                    },
+                ),
+                (
+                    1,
+                    {
+                        "a",
+                    },
+                ),
+            ],
+            columns=x.columns,
+        )
 
         yi = np.where(x.loc[:, "b"] == "a")
 

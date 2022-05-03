@@ -71,7 +71,8 @@ class ScenarioDiscoveryUtilTestCase(unittest.TestCase):
             columns=["a", "b", "c"],
         )
         boxlim = pd.DataFrame(
-            [(1.2, 0, {"a", "b"}), (8.0, 7, {"a", "b"})], columns=["a", "b", "c"],
+            [(1.2, 0, {"a", "b"}), (8.0, 7, {"a", "b"})],
+            columns=["a", "b", "c"],
         )
         x["c"] = x["c"].astype("category")
 

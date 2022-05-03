@@ -274,7 +274,6 @@ class BaseEvaluator:
 
 
 class SequentialEvaluator(BaseEvaluator):
-
     def initialize(self):
         pass
 

@@ -608,7 +608,8 @@ class Convergence(ProgressTrackingMixIn):
             metric.reset()
 
     def __call__(
-        self, optimizer,
+        self,
+        optimizer,
     ):
         nfe = optimizer.algorithm.nfe
         super().__call__(nfe - self.i)

@@ -106,7 +106,12 @@ def plot_discrete_cdf(ax, unc, x, y, xticklabels_on, ccdf):
                 cum_freq_un = (len(freqs) - j - 1) / n_cat
 
             ax.plot(
-                x_plot, [cum_freq_un] * 2, lw=1, c="darkgrey", zorder=1, label="x==y",
+                x_plot,
+                [cum_freq_un] * 2,
+                lw=1,
+                c="darkgrey",
+                zorder=1,
+                label="x==y",
             )
             ax.scatter(
                 x_plot[0],

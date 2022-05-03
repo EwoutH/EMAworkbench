@@ -356,12 +356,14 @@ class PrimBox:
         self.prim = prim
 
         # peeling and pasting trajectory
-        columns = {"coverage": pd.Series(dtype=float),
-                   "density": pd.Series(dtype=float),
-                   "mean": pd.Series(dtype=float),
-                   "res_dim": pd.Series(dtype=int),
-                   "mass": pd.Series(dtype=float),
-                   "id": pd.Series(dtype=float)}
+        columns = {
+            "coverage": pd.Series(dtype=float),
+            "density": pd.Series(dtype=float),
+            "mean": pd.Series(dtype=float),
+            "res_dim": pd.Series(dtype=int),
+            "mass": pd.Series(dtype=float),
+            "id": pd.Series(dtype=float),
+        }
 
         self.peeling_trajectory = pd.DataFrame(columns)
 
