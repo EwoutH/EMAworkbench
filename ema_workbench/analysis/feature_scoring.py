@@ -64,7 +64,7 @@ def _prepare_experiments(experiments):
     x_nominal_columns = x_nominal.columns.values
 
     for column in x_nominal_columns:
-        if np.unique(x[column]).shape == (1,):
+        if np.unique(x[column]).shape == (1):
             x = x.drop(column, axis=1)
             _logger.info(
                 ("{} dropped from analysis " "because only a single category").format(

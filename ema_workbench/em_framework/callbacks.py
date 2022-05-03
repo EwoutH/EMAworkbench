@@ -209,7 +209,7 @@ class DefaultCallback(AbstractCallback):
         for outcome in outcomes:
             shape = outcome.shape
             if shape is not None:
-                shape = (nr_experiments,) + shape
+                shape = (nr_experiments) + shape
                 data = np.empty(shape)
                 data[:] = np.nan
                 self.results[outcome.name] = data

@@ -128,7 +128,7 @@ def pca_preprocess(experiments, y, subsets=None, exclude=set()):
         # and an index
         subset_cols = [f"{key}_{i}" for i in range(len(value))]
         new_columns.extend(subset_cols)
-        new_dtypes.extend((float,) * len(value))
+        new_dtypes.extend((float) * len(value))
 
     # make a new empty experiments dataframe
     rotated_experiments = pd.DataFrame(index=experiments.index.values)
@@ -142,7 +142,7 @@ def pca_preprocess(experiments, y, subsets=None, exclude=set()):
 
     # iterate over the subsets, rotate them, and put them into the new
     # experiments dataframe
-    rotation_matrix = np.zeros((x.shape[1],) * 2)
+    rotation_matrix = np.zeros((x.shape[1]) * 2)
     column_names = []
     row_names = []
 
@@ -583,7 +583,7 @@ class PrimBox:
                 x_upper="(datum.x2-datum.minimum)/(datum.maximum-datum.minimum)",
             )
             .transform_filter(point_selector)
-            .properties(width=width,)
+            .properties(width=width)
         )
 
         lines = base.mark_rule()
@@ -613,7 +613,7 @@ class PrimBox:
         )
 
         data = pd.DataFrame([dict(start=0, end=1)])
-        rect = alt.Chart(data).mark_rect(opacity=0.05).encode(x="start:Q", x2="end:Q",)
+        rect = alt.Chart(data).mark_rect(opacity=0.05).encode(x="start:Q", x2="end:Q")
 
         # TODO:: for qp can we do something with the y encoding here and
         # connecting this to a selection?
@@ -622,9 +622,9 @@ class PrimBox:
         nominal = (
             alt.Chart(nominal_vars)
             .mark_point()
-            .encode(x="x:Q", y="name:N",)
+            .encode(x="x:Q", y="name:N")
             .transform_filter(point_selector)
-            .properties(width=width,)
+            .properties(width=width)
         )
 
         texts3 = nominal.mark_text(baseline="top", dy=5, align="center").encode(
@@ -993,7 +993,7 @@ class Prim(sdutil.OutputFormatterMixin):
 
         # filter out dimensions with only single value
         for column in x_nominal.columns.values:
-            if np.unique(x[column]).shape == (1,):
+            if np.unique(x[column]).shape == (1):
                 x = x.drop(column, axis=1)
                 _logger.info(
                     (

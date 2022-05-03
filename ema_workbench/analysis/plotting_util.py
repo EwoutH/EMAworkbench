@@ -414,7 +414,7 @@ def make_legend(categories, ax, ncol=3, legend_type=LegendEnum.LINE, alpha=1):
             #             marker_obj = mpl.markers.MarkerStyle('o')
             #             path = marker_obj.get_path().transformed(
             #                              marker_obj.get_transform())
-            #             artist  = mpl.collections.PathCollection((path,),
+            #             artist  = mpl.collections.PathCollection((path),
             #                                         sizes = [20],
             #                                         facecolors = COLOR_LIST[i],
             #                                         edgecolors = 'k',

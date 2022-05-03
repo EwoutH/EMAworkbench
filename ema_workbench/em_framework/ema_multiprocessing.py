@@ -63,7 +63,7 @@ def initializer(*args):
     # remove the root temp
     if tmpdir:
         multiprocessing.util.Finalize(
-            None, finalizer, args=(os.path.abspath(tmpdir),), exitpriority=10
+            None, finalizer, args=(os.path.abspath(tmpdir)), exitpriority=10
         )
 
 

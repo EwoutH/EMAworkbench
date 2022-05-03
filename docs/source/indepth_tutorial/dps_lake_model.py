@@ -98,7 +98,7 @@ def lake_model(
         X[0] = 0.0
         decision = 0.1
 
-        decisions = np.zeros(myears,)
+        decisions = np.zeros(myears)
         decisions[0] = decision
 
         natural_inflows = np.random.lognormal(

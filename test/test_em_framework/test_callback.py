@@ -117,7 +117,7 @@ class TestDefaultCallback(unittest.TestCase):
     #         with mock.patch('ema_workbench.util.ema_logging.debug') as mocked_logging:
     #             callback = DefaultCallback(uncs, [], outcomes,
     #                                        nr_experiments=nr_experiments)
-    #             model_outcomes = {'incorrect': np.random.rand(2,)}
+    #             model_outcomes = {'incorrect': np.random.rand(2)}
     #             callback(experiment, model_outcomes)
     #
     #             for outcome in outcomes:

@@ -26,9 +26,9 @@ class ScenarioDiscoveryUtilTestCase(unittest.TestCase):
 
     def test_in_box(self):
         x = pd.DataFrame(
-            [(0,), (1,), (2,), (3,), (4,), (5,), (6,), (7,), (8,), (9,)], columns=["a"]
+            [(0), (1), (2), (3), (4), (5), (6), (7), (8), (9)], columns=["a"]
         )
-        boxlim = pd.DataFrame([(1,), (8,)], columns=["a"])
+        boxlim = pd.DataFrame([(1), (8)], columns=["a"])
         correct_result = np.array([[1, 2, 3, 4, 5, 6, 7, 8]], dtype=np.int).T
         logical = sdutil._in_box(x, boxlim)
         result = x.loc[logical]
@@ -189,7 +189,7 @@ class ScenarioDiscoveryUtilTestCase(unittest.TestCase):
             ],
             columns=["a", "b", "c"],
         )
-        y = np.zeros((x.shape[0],), dtype=np.int)
+        y = np.zeros((x.shape[0]), dtype=np.int)
         y[(x.a > 0.5) & (x.c != "a")] = 1
 
         x["c"] = x["c"].astype("category")
@@ -197,7 +197,7 @@ class ScenarioDiscoveryUtilTestCase(unittest.TestCase):
         box_init = sdutil._make_box(x)
         boxlim = box_init.copy()
         boxlim.a = [0.5, 1.0]
-        boxlim.c = [set("b",)] * 2
+        boxlim.c = [set("b")] * 2
         restricted_dims = ["a", "c"]
 
         qp_values = {"a": [0.05, 0.9], "c": [0.05, -1]}
@@ -222,7 +222,7 @@ class ScenarioDiscoveryUtilTestCase(unittest.TestCase):
             ],
             columns=["a", "b", "c"],
         )
-        y = np.zeros((x.shape[0],), dtype=np.int)
+        y = np.zeros((x.shape[0]), dtype=np.int)
         y[(x.a > 0.5) & (x.c != "a")] = 1
 
         x.loc[6, "c"] = "a"
@@ -232,7 +232,7 @@ class ScenarioDiscoveryUtilTestCase(unittest.TestCase):
         box_init = sdutil._make_box(x)
         boxlim = box_init.copy()
         boxlim.a = [0.5, 1.0]
-        boxlim.c = [set("b",)] * 2
+        boxlim.c = [set("b")] * 2
         restricted_dims = ["a", "c"]
 
         sdutil.plot_pair_wise_scatter(x, y, boxlim, box_init, restricted_dims)
@@ -255,7 +255,7 @@ class ScenarioDiscoveryUtilTestCase(unittest.TestCase):
             ],
             columns=["a", "b", "c"],
         )
-        y = np.zeros((x.shape[0],), dtype=np.int)
+        y = np.zeros((x.shape[0]), dtype=np.int)
         logical = (x.a > 0.5) & (x.c != "a")
         y[logical] = 1
 
@@ -267,11 +267,11 @@ class ScenarioDiscoveryUtilTestCase(unittest.TestCase):
         box_init = sdutil._make_box(x)
         boxlim1 = box_init.copy()
         boxlim1.a = [0.5, 1]
-        boxlim1.c = [set("b",)] * 2
+        boxlim1.c = [set("b")] * 2
 
         boxlim2 = box_init.copy()
         boxlim2.a = [0.1, 0.5]
-        boxlim2.c = [set("a",)] * 2
+        boxlim2.c = [set("a")] * 2
 
         sdutil.plot_boxes(x, [boxlim1, boxlim2], together=True)
         sdutil.plot_boxes(x, [boxlim1, boxlim2], together=False)
@@ -294,7 +294,7 @@ class ScenarioDiscoveryUtilTestCase(unittest.TestCase):
             ],
             columns=["a", "b", "c"],
         )
-        y = np.zeros((x.shape[0],), dtype=np.int)
+        y = np.zeros((x.shape[0]), dtype=np.int)
         logical = (x.a > 0.5) & (x.c != "a")
         y[logical] = 1
 
@@ -306,11 +306,11 @@ class ScenarioDiscoveryUtilTestCase(unittest.TestCase):
         box_init = sdutil._make_box(x)
         boxlim1 = box_init.copy()
         boxlim1.a = [0.5, 1]
-        boxlim1.c = [set("b",)] * 2
+        boxlim1.c = [set("b")] * 2
 
         boxlim2 = box_init.copy()
         boxlim2.a = [0.1, 0.5]
-        boxlim2.c = [set("a",)] * 2
+        boxlim2.c = [set("a")] * 2
 
         with self.assertRaises(AttributeError):
 

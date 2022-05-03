@@ -391,7 +391,7 @@ class ParallelAxes:
         index = self.limits.columns.get_loc(column)
         if index == 0 or index >= (len(self.axes)):
             index = min(index, (len(self.axes) - 1))
-            return (index,)
+            return (index)
         else:
             other_index = index - 1
             return other_index, index

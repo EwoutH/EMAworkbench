@@ -199,9 +199,9 @@ def plot_individual_cdf(
          axes on which to plot the cdf
     unc : str
           the name of the uncertainty
-    x : ndarray of shape (1,)
+    x : ndarray of shape (1)
         the data to plot
-    y : ndarray(1,)
+    y : ndarray(1)
         the categorization for the data
     discrete : bool, optional
                if true, plot a discrete cdf. Default is false.
