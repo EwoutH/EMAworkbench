@@ -352,7 +352,7 @@ class ScalarOutcome(AbstractOutcome):
     def from_disk(cls, filename, archive):
         f = archive.extractfile(filename)
         values = pd.read_csv(f, index_col=False, header=None).values
-        values = np.reshape(values, (values.shape[0],))
+        values = np.reshape(values, (values.shape[0]))
 
         return values
 

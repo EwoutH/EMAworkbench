@@ -266,7 +266,7 @@ def set_legend_to_bw(leg, style, colormap, line_style="continuous"):
             if isinstance(element, mpl.collections.PathCollection):
                 rgb_orig = color_converter.to_rgb(element._facecolors[0])
                 new_color = color_converter.to_rgba(colormap[rgb_orig]["fill"])
-                element._facecolors = np.array((new_color,))
+                element._facecolors = np.array((new_color))
             elif isinstance(element, mpl.patches.Rectangle):
                 rgb_orig = color_converter.to_rgb(element._facecolor)
 

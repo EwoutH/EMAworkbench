@@ -38,8 +38,8 @@ def lake_problem(
 
     Pcrit = brentq(lambda x: x ** q / (1 + x ** q) - b * x, 0.01, 1.5)
     nvars = len(decisions)
-    X = np.zeros((nvars,))
-    average_daily_P = np.zeros((nvars,))
+    X = np.zeros((nvars))
+    average_daily_P = np.zeros((nvars))
     decisions = np.array(decisions)
     reliability = 0.0
 

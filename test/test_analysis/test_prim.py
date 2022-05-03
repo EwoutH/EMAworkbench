@@ -82,7 +82,7 @@ class PrimBoxTestCase(unittest.TestCase):
         cols = ["mean", "mass", "coverage", "density", "res_dim"]
         data = np.zeros((100, 5))
         data[:, 0:4] = np.random.rand(100, 4)
-        data[:, 4] = np.random.randint(0, 5, size=(100,))
+        data[:, 4] = np.random.randint(0, 5, size=(100))
         box.peeling_trajectory = pd.DataFrame(data, columns=cols)
 
         box.show_ppt()
@@ -97,7 +97,7 @@ class PrimBoxTestCase(unittest.TestCase):
         cols = ["mean", "mass", "coverage", "density", "res_dim"]
         data = np.zeros((100, 5))
         data[:, 0:4] = np.random.rand(100, 4)
-        data[:, 4] = np.random.randint(0, 5, size=(100,))
+        data[:, 4] = np.random.randint(0, 5, size=(100))
         box.peeling_trajectory = pd.DataFrame(data, columns=cols)
 
         box.show_tradeoff()
@@ -172,7 +172,7 @@ class PrimTestCase(unittest.TestCase):
             threshold=threshold,
         )
 
-        value = np.ones((experiments.shape[0],))
+        value = np.ones((experiments.shape[0]))
         value = value[outcomes["death toll"] >= threshold].shape[0]
         self.assertTrue(prim_obj.t_coi == value)
 
@@ -186,7 +186,7 @@ class PrimTestCase(unittest.TestCase):
             threshold=threshold,
         )
 
-        value = np.ones((experiments.shape[0],))
+        value = np.ones((experiments.shape[0]))
         value = value[outcomes["death toll"] <= threshold].shape[0]
         self.assertTrue(prim_obj.t_coi == value)
 
@@ -231,7 +231,7 @@ class PrimTestCase(unittest.TestCase):
             incl_unc=unc,
         )
 
-        value = np.ones((experiments.shape[0],))
+        value = np.ones((experiments.shape[0]))
         value = value[outcomes["death toll"] >= threshold].shape[0]
         self.assertTrue(prim_obj.t_coi == value)
 
@@ -245,7 +245,7 @@ class PrimTestCase(unittest.TestCase):
             threshold=threshold,
         )
 
-        value = np.ones((experiments.shape[0],))
+        value = np.ones((experiments.shape[0]))
         value = value[outcomes["death toll"] <= threshold].shape[0]
         self.assertTrue(prim_obj.t_coi == value)
 
@@ -417,7 +417,7 @@ class PrimTestCase(unittest.TestCase):
             columns=["a", "b"],
         )
 
-        y = np.random.randint(0, 2, (10,))
+        y = np.random.randint(0, 2, (10))
         y = y.astype(int)
         y = {"y": y}
         results = x, y
@@ -446,7 +446,7 @@ class PrimTestCase(unittest.TestCase):
             columns=["a", "b"]
         )
 
-        y = np.random.randint(0, 2, (10,))
+        y = np.random.randint(0, 2, (10))
         y = y.astype(int)
         y = {"y": y}
         results = x, y
@@ -485,7 +485,7 @@ class PrimTestCase(unittest.TestCase):
         x = pd.DataFrame(list(zip(a, b)), columns=["a", "b"])
         x["b"] = x["b"].astype("category")
 
-        y = np.random.randint(0, 2, (10,))
+        y = np.random.randint(0, 2, (10))
         y = y.astype(int)
         y = {"y": y}
         results = x, y

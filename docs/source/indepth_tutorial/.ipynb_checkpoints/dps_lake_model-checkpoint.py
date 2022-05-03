@@ -76,8 +76,8 @@ def lake_model(b=0.42, q=2.0, mean=0.02,
     np.random.seed(seed)
     Pcrit = brentq(lambda x: x**q/(1+x**q) - b*x, 0.01, 1.5)
 
-    X = np.zeros((myears,))
-    average_daily_P = np.zeros((myears,))
+    X = np.zeros((myears))
+    average_daily_P = np.zeros((myears))
     reliability = 0.0
     inertia = 0
     utility = 0

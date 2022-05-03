@@ -18,7 +18,7 @@ class ClusterTestCase(unittest.TestCase):
         plt.draw()
 
         assignment = clusterer.apply_agglomerative_clustering(distances, 2)
-        self.assertEqual(assignment.shape, (10,))
+        self.assertEqual(assignment.shape, (10))
 
         distances = clusterer.calculate_cid(data, condensed_form=True)
         self.assertEqual(distances.shape, sum(np.arange(0, n)))

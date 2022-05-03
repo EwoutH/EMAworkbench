@@ -30,7 +30,7 @@ class TestDefaultCallback(unittest.TestCase):
         uncs = [RealParameter("a", 0, 1), RealParameter("b", 0, 1)]
         outcomes = [
             ScalarOutcome("scalar"),
-            ArrayOutcome("array", shape=(10,)),
+            ArrayOutcome("array", shape=(10)),
             TimeSeriesOutcome("timeseries"),
         ]
         callback = DefaultCallback(uncs, [], outcomes, nr_experiments=100)
@@ -88,7 +88,7 @@ class TestDefaultCallback(unittest.TestCase):
         _, out = callback.get_results()
 
         self.assertIn(outcomes[0].name, set(out.keys()))
-        self.assertEqual(out[outcomes[0].name].shape, (3,))
+        self.assertEqual(out[outcomes[0].name].shape, (3))
 
         # case 2 time series shape = (1, nr_time_steps)
         callback = DefaultCallback(uncs, [], outcomes, nr_experiments=nr_experiments)
