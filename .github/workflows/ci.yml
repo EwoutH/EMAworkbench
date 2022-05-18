@@ -16,6 +16,9 @@ jobs:
         include:
           - os: ubuntu-latest
             python-version: "3.8"
+          - os: ubuntu-latest
+            python-version: "3.9"
+            pip-pre-release: "--pre "
           # Python 3.10 run is disabled, because nose doesn't support Python 3.10
           #- os: ubuntu-latest
           #  python-version: "3.10"
@@ -31,7 +34,7 @@ jobs:
       run: |
         pip install --upgrade pip
         pip install flake8 nose nose-exclude coverage coveralls
-        pip install -r requirements.txt
+        pip install ${{ matrix.pip-pre-release }}-r requirements.txt
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
