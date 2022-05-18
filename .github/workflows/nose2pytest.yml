@@ -2,7 +2,7 @@ name: "Nose to PyTest"
 on: [push, workflow_dispatch]
 
 jobs:
-  piplock:
+  nose2pytest:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -11,7 +11,7 @@ jobs:
         python-version: 3.6
     - run: pip install -U wheel pip setuptools
     - run: pip install -U --pre nose2pytest
-    - run: nose2pytest test
+    - run: nose2pytest ema_workbench
     - uses: peter-evans/create-pull-request@v4
       with:
         title: "Nose to PyTest"
