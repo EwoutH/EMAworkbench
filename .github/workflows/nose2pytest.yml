@@ -10,7 +10,7 @@ jobs:
       with:
         python-version: 3.6
     - run: pip install -U wheel pip setuptools
-    - run: pip install -U --pre nose2pytest
+    - run: pip install -e git+https://github.com/pytest-dev/nose2pytest#egg=nose2pytest
     - run: nose2pytest ema_workbench
     - uses: peter-evans/create-pull-request@v4
       with:
