@@ -6,12 +6,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+      with:
+        ref: master
     - uses: actions/setup-python@v3
       with:
         python-version: 3.8
     - run: pip install -U wheel pip setuptools
     - run: pip install -e git+https://github.com/pytest-dev/nose2pytest#egg=nose2pytest
-    - run: nose2pytest .
+    - run: nose2pytest ema_workbench
     - uses: peter-evans/create-pull-request@v4
       with:
         title: "Nose to PyTest"
