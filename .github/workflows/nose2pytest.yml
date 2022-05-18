@@ -1,0 +1,19 @@
+name: "Nose to PyTest"
+on: [push, workflow_dispatch]
+
+jobs:
+  piplock:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v3
+      with:
+        python-version: 3.8
+    - run: pip install -U wheel pip setuptools
+    - run: pip install -U --pre nose2pytest
+    - run: nose2pytest
+    - uses: peter-evans/create-pull-request@v4
+      with:
+        title: "Nose to PyTest"
+        branch: nose2pytest
+        commit-message: "Migrate test from Nose to PyTest"
