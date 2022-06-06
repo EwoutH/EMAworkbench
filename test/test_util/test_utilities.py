@@ -18,7 +18,6 @@ from ema_workbench.util.utilities import (
 from ema_workbench.em_framework.outcomes import (
     ScalarOutcome,
     ArrayOutcome,
-    TimeSeriesOutcome,
     register,
 )
 

@@ -16,7 +16,6 @@ from ema_workbench.em_framework import (
     TimeSeriesOutcome,
 )
 from ema_workbench.em_framework.parameters import Policy
-from ema_workbench.connectors import netlogo
 
 
 def setUpModule():
