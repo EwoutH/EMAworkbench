@@ -549,7 +549,8 @@ class Constraint(ScalarOutcome):
     """
 
     def __init__(self, name, parameter_names=None, outcome_names=None, function=None):
-        assert callable(function)
+        if not callable(function):
+            raise AssertionError
         if not parameter_names:
             parameter_names = []
         elif isinstance(parameter_names, str):
@@ -574,7 +575,8 @@ class Constraint(ScalarOutcome):
 
     def process(self, values):
         value = super().process(values)
-        assert value >= 0
+        if value < 0:
+            raise AssertionError
         return value
 
 

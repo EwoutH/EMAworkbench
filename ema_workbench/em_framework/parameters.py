@@ -158,9 +158,10 @@ class Parameter(Variable, metaclass=abc.ABCMeta):
         **kwargs : valid keyword arguments for Parameter instance
 
         """
-        assert isinstance(
+        if not isinstance(
             dist, sp.stats._distn_infrastructure.rv_frozen
-        )  # @UndefinedVariable
+        ):
+            raise AssertionError
         self = cls.__new__(cls)
         self.dist = dist
         self.name = name

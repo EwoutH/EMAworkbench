@@ -660,8 +660,10 @@ def make_continuous_grouping_specifiers(array, nr_of_groups=5):
     maximum = np.max(array)
     step = (maximum - minimum) / nr_of_groups
     a = [(minimum + step * x, minimum + step * (x + 1)) for x in range(nr_of_groups)]
-    assert a[0][0] == minimum
-    assert a[-1][1] == maximum
+    if a[0][0] != minimum:
+        raise AssertionError
+    if a[-1][1] != maximum:
+        raise AssertionError
     return a
 
 

@@ -770,9 +770,12 @@ def robust_optimize(
 
     """
     for rf in robustness_functions:
-        assert isinstance(rf, ScalarOutcome)
-        assert rf.kind != AbstractOutcome.INFO
-        assert rf.function is not None
+        if not isinstance(rf, ScalarOutcome):
+            raise AssertionError
+        if rf.kind == AbstractOutcome.INFO:
+            raise AssertionError
+        if rf.function is None:
+            raise AssertionError
 
     problem = to_robust_problem(
         model,

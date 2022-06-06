@@ -142,7 +142,8 @@ class CART(sdutil.OutputFormatterMixin):
         # based on
         # http://stackoverflow.com/questions/20224526/how-to-extract-the-
         # decision-rules-from-scikit-learn-decision-tree
-        assert self.clf
+        if not self.clf:
+            raise AssertionError
 
         left = self.clf.tree_.children_left
         right = self.clf.tree_.children_right
