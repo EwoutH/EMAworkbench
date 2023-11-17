@@ -249,8 +249,6 @@ class BaseNetLogoModel(FileModel):
         except AttributeError:
             pass
 
-    #         jpype.shutdownJVM()
-    #         self.netlogo = None
 
     def _handle_outcomes(self, fns):
         """helper function for parsing outcomes"""

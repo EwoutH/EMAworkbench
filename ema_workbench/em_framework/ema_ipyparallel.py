@@ -204,7 +204,6 @@ class LogWatcher(LoggingConfigurable):
         else:
             for topic in self.topics:
                 self.log.debug(f"Subscribing to: {topic!r}")
-                # @UndefinedVariable
                 self.stream.setsockopt(zmq.SUBSCRIBE, topic)
 
     def _extract_level(self, topic_str):

@@ -142,7 +142,6 @@ def tearDownModule():
                 print("couldn't shutdown process: ", p)
 
 
-#     blackhole.close()
 
 
 class TestEngineLoggerAdapter(unittest.TestCase):
@@ -180,7 +179,6 @@ class TestEngineLoggerAdapter(unittest.TestCase):
         # no handlers
         ema.set_engine_logger()
         logger = ema_logging._logger
-        #         self.assertTrue(type(logger) == type(mocked_adapter))
         mocked_logger.setLevel.assert_called_once_with(ema_logging.DEBUG)
         mocked_adapter.assert_called_with(mocked_logger, ema.SUBTOPIC)
 
@@ -189,7 +187,6 @@ class TestEngineLoggerAdapter(unittest.TestCase):
 
         #         ipyparallel.
 
-        #         mock_engine_handler = mock.create_autospec(ipyparallel.log.EnginePUBHandler)
         mocked_logger.handlers = []  # [mock_engine_handler]
 
         mocked_application.instance.return_value = mocked_application
@@ -197,40 +194,12 @@ class TestEngineLoggerAdapter(unittest.TestCase):
 
         ema.set_engine_logger()
         logger = ema_logging._logger
-        #         self.assertTrue(type(logger) == ema.EngingeLoggerAdapter)
         mocked_logger.setLevel.assert_called_once_with(ema_logging.DEBUG)
         mocked_adapter.assert_called_with(mocked_logger, ema.SUBTOPIC)
 
 
-#         mock_engine_handler.setLevel.assert_called_once_with(ema_logging.DEBUG)
 
 
-#     def test_on_cluster(self):
-#         client = ipyparallel.Client(profile='default')
-#         client[:].apply_sync(ema.set_engine_logger)
-#
-#         def test_engine_logger():
-#             from em_framework import ema_logging # @Reimport
-#             from em_framework import ema_parallel_ipython as ema # @Reimport
-#
-#             logger = ema_logging._logger
-#
-#             tests = []
-#             tests.append((type(logger) == ema.EngingeLoggerAdapter,
-#                           'logger adapter'))
-#             tests.append((logger.logger.level == ema_logging.DEBUG,
-#                           'logger level'))
-#             tests.append((logger.topic == ema.SUBTOPIC,
-#                           'logger subptopic'))
-#             return tests
-#
-#         for engine in client.ids:
-#             tests = client[engine].apply_sync(test_engine_logger)
-#             for test in tests:
-#                 test, msg = test
-#                 self.assertTrue(test, msg)
-#
-#         client.clear(block=True)
 
 
 class TestLogWatcher(unittest.TestCase):
@@ -243,7 +212,6 @@ class TestLogWatcher(unittest.TestCase):
 
         cls.client = ipyparallel.Client(profile="default")
         cls.url = f"tcp://{localhost()}:20202"
-        #         cls.watcher, cls.thread = ema.start_logwatcher()
         cls.watcher = LogWatcher()
 
     @classmethod
@@ -312,7 +280,6 @@ class TestEngine(unittest.TestCase):
     def setUpClass(cls):
         cls.client = ipyparallel.Client(profile="default")
 
-    #         cls.client = ipyparallel.Client()
 
     @classmethod
     def tearDownClass(cls):

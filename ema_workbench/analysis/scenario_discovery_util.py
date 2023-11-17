@@ -88,7 +88,6 @@ def _make_box(x):
 
     """
 
-    # x.select_dtypes(np.number)
 
     def limits(x):
         if pd.api.types.is_numeric_dtype(x.dtype):  # @UndefinedVariable
@@ -156,8 +155,6 @@ def _determine_restricted_dims(box_limits, box_init):
     """
     cols = box_init.columns.values
     restricted_dims = cols[np.all(box_init.values == box_limits.values, axis=0) == False]
-    #     restricted_dims = [column for column in box_init.columns if not
-    #            np.all(box_init[column].values == box_limits[column].values)]
     return restricted_dims
 
 

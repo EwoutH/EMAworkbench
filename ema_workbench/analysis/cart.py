@@ -162,7 +162,6 @@ class CART(sdutil.OutputFormatterMixin):
 
         def recurse(left, right, child, lineage=None):
             if lineage is None:
-                # lineage = [self.clf.tree_.value[child]]
                 lineage = []
 
             if child in left:

@@ -127,7 +127,6 @@ class Problem(PlatypusProblem):
             constraints = []
 
         super().__init__(len(parameters), len(outcome_names), nconstrs=len(constraints))
-        #         assert len(parameters) == len(parameter_names)
         assert searchover in ("levers", "uncertainties", "robust")
 
         if searchover == "levers":
@@ -687,7 +686,6 @@ class ArchiveLogger(AbstractConvergenceMetric):
         self.outcome_varnames = outcome_varnames
         self.tarfilename = os.path.join(self.directory, base_filename)
 
-        # self.index = 0
 
     def __call__(self, optimizer):
         archive = to_dataframe(optimizer.result, self.decision_varnames, self.outcome_varnames)
@@ -965,7 +963,6 @@ class CombinedVariator(Variator):
         return child1, child2
 
     def crossover_integer(self, child1, child2, i, type):  # @ReservedAssignment
-        # HUX()
         for j in range(type.nbits):
             if child1.variables[i][j] != child2.variables[i][j]:
                 if bool(random.getrandbits(1)):
@@ -1083,12 +1080,10 @@ def _optimize(
             variator = None
         else:
             variator = CombinedVariator()
-    # mutator = CombinedMutator()
 
     optimizer = algorithm(
         problem, evaluator=evaluator, variator=variator, log_frequency=500, **kwargs
     )
-    # optimizer.mutator = mutator
 
     convergence = Convergence(
         convergence, nfe, convergence_freq=convergence_freq, logging_freq=logging_freq
@@ -1101,7 +1096,6 @@ def _optimize(
 
     convergence(optimizer, force=True)
 
-    # convergence.pbar.__exit__(None, None, None)
 
     results = to_dataframe(optimizer.result, problem.parameter_names, problem.outcome_names)
     convergence = convergence.to_dataframe()

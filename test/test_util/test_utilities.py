@@ -170,6 +170,3 @@ class ConfigTestCase(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-#     testsuite = unittest.TestSuite()
-#     testsuite.addTest(LoadResultsTestCase("test_load_results"))
-#     unittest.TextTestRunner().run(testsuite)

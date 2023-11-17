@@ -8,7 +8,6 @@ import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 import numpy as np
 
-# from . import plotting_util
 from .plotting_util import LegendEnum, get_color, prepare_pairs_data, make_legend
 from ..util import get_module_logger
 
@@ -359,9 +358,6 @@ def simple_pairs_density(
         if i == j:
             # only plot the name in the middle
             pass
-            # ax.hexbin(x_data, y_data, bins=bins, gridsize=gridsize,
-            #           cmap=cm.__dict__[colormap], alpha=0, edgecolor='white',
-            #           linewidths=1, extent=extent)
         else:
             ax.hexbin(
                 x_data,

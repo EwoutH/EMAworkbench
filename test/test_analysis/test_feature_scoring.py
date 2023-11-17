@@ -194,6 +194,3 @@ if __name__ == "__main__":
     ema_logging.log_to_stderr(ema_logging.INFO)
     unittest.main()
 
-#     suite = unittest.TestSuite()
-#     suite.addTest(FeatureScoringTestCase("test_get_lasso_feature_scores"))
-#     unittest.TextTestRunner().run(suite)

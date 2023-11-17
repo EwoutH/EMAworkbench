@@ -54,31 +54,6 @@ class SamplerTestCase(unittest.TestCase):
         sampler = FullFactorialSampler()
         self._test_generate_designs(sampler)
 
-    # def test_pf_sampler(self):
-    #     uncs = [RealParameter('a', 0, 5, resolution=(0, 2.5,5), pff=True),
-    #             RealParameter('b', 0, 1, resolution=(0,1), pff=True),
-    #             RealParameter('c', 0, 1),
-    #             RealParameter('d', 1, 2),
-    #             ]
-    #
-    #     sampler = PartialFactorialSampler()
-    #     designs = sampler.generate_designs(uncs, 10)
-    #     designs.kind = Scenario
-    #
-    #     expected = 60
-    #     self.assertEqual(expected, designs.n)
-    #
-    #     self.assertEqual(expected, len([design for design in designs]))
-    #
-    #     ff, other = sampler._sort_parameters(uncs)
-    #
-    #     received = {u.name for u in ff}
-    #     expected = {'a', 'b'}
-    #     self.assertEqual(received, expected)
-    #
-    #     received = {u.name for u in other}
-    #     expected = {'c', 'd'}
-    #     self.assertEqual(received, expected)
 
     def test_determine_parameters(self):
         function = mock.Mock()
@@ -106,16 +81,6 @@ class SamplerTestCase(unittest.TestCase):
         self.assertNotIn("c", parameters.keys())
         self.assertNotIn("a", parameters.keys())
 
-    # def test_sample_jointly(self):
-    #     function = mock.Mock()
-    #     model = Model("A", function)
-    #     model.uncertainties = [RealParameter('a', 0, 1),
-    #                            RealParameter('c', 0, 1),]
-    #     model.levers = [RealParameter('b', 0, 1),
-    #                     RealParameter('d', 0, 1),]
-    #
-    #     designs = sample_jointly(model, 10)
-    #     self.assertEqual(designs.n, 10)
 
 
 if __name__ == "__main__":

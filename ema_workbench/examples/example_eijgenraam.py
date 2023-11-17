@@ -205,9 +205,7 @@ if __name__ == "__main__":
     # Set uncertainties
     model.uncertainties = [
         RealParameter.from_dist("P0", sp.stats.lognorm(scale=0.00137, s=0.25)),
-        # @UndefinedVariable
         RealParameter.from_dist("alpha", sp.stats.norm(loc=0.0502, scale=0.01)),
-        # @UndefinedVariable
         RealParameter.from_dist("eta", sp.stats.lognorm(scale=0.76, s=0.1)),
     ]  # @UndefinedVariable
 

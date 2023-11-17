@@ -55,11 +55,6 @@ class Policy(Point):
     def __init__(self, name=None, **kwargs):
         super().__init__(name, Policy.id_counter(), **kwargs)
 
-    # def to_list(self, parameters):
-    #     """get list like representation of policy where the
-    #     parameters are in the order of levers"""
-    #
-    #     return [self[param.name] for param in parameters]
 
     def __repr__(self):
         return f"Policy({super(Policy, self).__repr__()})"
@@ -203,29 +198,6 @@ def combine_cases_factorial(*point_collections):
         yield Point(**ChainMap(*entry))
 
 
-# def combine_cases(method, *cases):
-#     """
-#
-#     generator function which yields experiments
-#
-#     Parameters
-#     ----------
-#     combine = {'factorial, sample'}
-#               controls how to combine scenarios, policies, and model_structures
-#               into experiments.
-#     cases
-#
-#     """
-#
-#     if method == 'sample':
-#         combined_cases = zip_cycle(cases)
-#     elif method == 'factorial':
-#         # full factorial
-#         combined_cases = itertools.product(*cases)
-#     else:
-#         ValueError(f"{combine} is unknown value for combine")
-#
-#     return combined_cases
 
 
 def experiment_generator(scenarios, model_structures, policies, combine="factorial"):

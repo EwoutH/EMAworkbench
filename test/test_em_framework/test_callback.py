@@ -96,7 +96,6 @@ def test_init():
     assert callback.nr_experiments == 100
     assert callback.cases.shape[0] == 100
     assert callback.reporting_interval == 100
-    #         self.assertEqual(callback.outcomes, outcomes)
 
     names = [name for name, _ in callback.uncertainty_and_lever_labels]
     names = set(names)
@@ -123,7 +122,6 @@ def test_init():
     assert callback.nr_experiments == 1000
     assert callback.cases.shape[0] == 1000
     assert callback.reporting_interval == 250
-    #         self.assertEqual(callback.outcomes, [o.name for o in outcomes])
 
     names = [name for name, _ in callback.uncertainty_and_lever_labels]
     names = set(names)
@@ -136,14 +134,6 @@ def test_init():
 
 
 #         # KeyError
-#         with mock.patch('ema_workbench.util.ema_logging.debug') as mocked_logging:
-#             callback = DefaultCallback(uncs, [], outcomes,
-#                                        nr_experiments=nr_experiments)
-#             model_outcomes = {'incorrect': np.random.rand(2,)}
-#             callback(experiment, model_outcomes)
-#
-#             for outcome in outcomes:
-#                 mocked_logging.assert_called_with("%s not specified as outcome in msi" % outcome.name)
 
 
 def test_store_cases():
@@ -173,7 +163,6 @@ def test_store_cases():
     callback(experiment, model_outcomes)
 
     experiments, _ = callback.get_results()
-    # design = case
     case["policy"] = policy.name
     case["model"] = model.name
     case["scenario"] = scenario.name

@@ -208,7 +208,6 @@ class SimioModel(FileModel, SingleReplication):
     def scenario_ended(self, sender, scenario_ended_event):
         """scenario ended event handler"""
 
-        #         ema_logging.debug('scenario ended called!')
 
         # This event handler will be called when all replications for a
         # given scenario have completed.  At this point the statistics
@@ -224,11 +223,6 @@ class SimioModel(FileModel, SingleReplication):
 
         # http://stackoverflow.com/questions/16484167/python-net-framework-reference-argument-double
 
-        # results = scenario_ended_event.get_Results()
-        # data = []
-        # for result in results:
-        #     data.append(SimioAPI.IScenarioResult(result))
-        # results = data
 
         for response in responses:
             _logger.debug(f"{response}")

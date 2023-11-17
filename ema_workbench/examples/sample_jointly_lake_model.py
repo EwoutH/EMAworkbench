@@ -24,7 +24,6 @@ from ema_workbench import (
 from ema_workbench.em_framework import get_SALib_problem, sample_parameters
 from ema_workbench.em_framework import SobolSampler
 
-# from ema_workbench.em_framework.evaluators import Samplers
 
 
 def get_antropogenic_release(xt, c1, c2, r1, r2, w1):
@@ -159,11 +158,8 @@ if __name__ == "__main__":
     # specify outcomes
     lake_model.outcomes = [
         ScalarOutcome("max_P", kind=ScalarOutcome.MINIMIZE),
-        # @UndefinedVariable
         ScalarOutcome("utility", kind=ScalarOutcome.MAXIMIZE),
-        # @UndefinedVariable
         ScalarOutcome("inertia", kind=ScalarOutcome.MAXIMIZE),
-        # @UndefinedVariable
         ScalarOutcome("reliability", kind=ScalarOutcome.MAXIMIZE),
     ]  # @UndefinedVariable
 

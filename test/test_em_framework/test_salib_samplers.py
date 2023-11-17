@@ -98,8 +98,6 @@ class SamplerTestCase(unittest.TestCase):
         self.assertEqual(len(uncertainties), problem["num_vars"])
         self.assertEqual([u.name for u in uncertainties], problem["names"])
 
-        #         for i, (name, bounds) in enumerate(zip(problem['names'], problem['bounds'])):
-        #             self.assertEqual()
 
         self.assertEqual((0, 10), problem["bounds"][0])
         self.assertEqual((0, 5), problem["bounds"][1])

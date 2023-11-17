@@ -99,8 +99,6 @@ def plot_envelope(ax, j, time, value, fill=False):
     color = get_color(j)
 
     if fill:
-        #        ax.plot(time, minimum, color=color, alpha=0.3)
-        #        ax.plot(time, maximum, color=color, alpha=0.3)
         ax.fill_between(time, minimum, maximum, facecolor=color, alpha=0.3)
     else:
         ax.plot(time, minimum, c=color)
@@ -179,12 +177,6 @@ def plot_boxplots(ax, values, log, group_labels=None):
 
     """
 
-    # if log:
-    #     _logger.warning("log option ignored for boxplot")
-    #
-    # ax.boxplot(values)
-    # if group_labels:
-    #     ax.set_xticklabels(group_labels, rotation='vertical')
 
     if log:
         _logger.warning("log option ignored for boxplot")
@@ -476,12 +468,6 @@ def determine_kde(data, size_kde=1000, ymin=None, ymax=None):
     try:
         kde_x = stats.gaussian_kde(data)
         kde_x = kde_x.evaluate(kde_y)
-    #         grid = GridSearchCV(KernelDensity(kernel='gaussian'),
-    #                             {'bandwidth': np.linspace(ymin, ymax, 20)},
-    #                             cv=20)
-    #         grid.fit(data[:, np.newaxis])
-    #         best_kde = grid.best_estimator_
-    #         kde_x = np.exp(best_kde.score_samples(kde_y[:, np.newaxis]))
     except Exception as e:
         _logger.warning(f"error in determine_kde: {e}")
         kde_x = np.zeros(kde_y.shape)

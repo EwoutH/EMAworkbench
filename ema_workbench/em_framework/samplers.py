@@ -190,56 +190,6 @@ class UniformLHSSampler(LHSSampler):
         return samples
 
 
-# class FactorialLHSSampler(LHSSampler):
-#     """generate LHS samples over the well characterized and the deeply
-#     uncertain factors separately, and than combine them in a full factorial
-#     way
-#
-#     Parameters
-#     ----------
-#     n_uniform : int
-#                 the number of samples for the deeply uncertain factor
-#     n_informative : int
-#                     the number of samples for the well characterized uncertain
-#                     factors
-#
-#     TODO:: needs a better name
-#     """
-#
-#     def __init__(self, n_uniform, n_informative):
-#         LHSSampler.__init__(self)
-#
-#     def generate_designs(self, parameters, nr_samples):
-#         """
-#
-#         Parameters
-#         ----------
-#         parameters : list
-#         nr_samples : int
-#
-#         Returns
-#         -------
-#         generator
-#         int
-#
-#         """
-#         parameters = sorted(parameters, key=operator.attrgetter('name'))
-#
-#         deeply_uncertain_parameters = []
-#         well_characterized_parameters = []
-#         for parameter in parameters:
-#             if isinstance(parameter.dist, (stats.randint, stats.uniform)):
-#                 deeply_uncertain_parameters.append(parameter)
-#             else:
-#                 well_characterized_parameters.append(parameter)
-#
-#         raise NotImplementedError
-#         # code below here makes no sense
-#         sampled_parameters = self.generate_samples(parameters, nr_samples)
-#         designs = zip(*[sampled_parameters[u.name] for u in parameters])
-#         designs = DefaultDesigns(designs, parameters, nr_samples)
-#
-#         return designs
 
 
 class MonteCarloSampler(AbstractSampler):
@@ -368,103 +318,6 @@ class FullFactorialSampler(AbstractSampler):
         return nr_designs
 
 
-# class PartialFactorialSampler(AbstractSampler):
-#     """
-#     generates a partial factorial design over the parameters. Any parameter
-#     where factorial is true will be included in a factorial design, while the
-#     remainder will be sampled using LHS or MC sampling.
-#
-#     Parameters
-#     ----------
-#     sampling: {PartialFactorialSampler.LHS, PartialFactorialSampler.MC}, optional
-#               the desired sampling for the non factorial parameters.
-#
-#     Raises
-#     ------
-#     ValueError
-#         if sampling is not either LHS or MC
-#
-#     """
-#
-#     LHS = 'LHS'
-#     MC = 'MC'
-#
-#     def __init__(self, sampling='LHS'):
-#         super(PartialFactorialSampler, self).__init__()
-#
-#         if sampling == PartialFactorialSampler.LHS:
-#             self.sampler = LHSSampler()
-#         elif sampling == PartialFactorialSampler.MC:
-#             self.sampler = MonteCarloSampler()
-#         else:
-#             raise ValueError(('invalid value for sampling type, should be LHS '
-#                               'or MC'))
-#         self.ff = FullFactorialSampler()
-#
-#     def _sort_parameters(self, parameters):
-#         """sort parameters into full factorial and other
-#
-#         Parameters
-#         ----------
-#         parameters : list of parameters
-#
-#         """
-#         ff_params = []
-#         other_params = []
-#
-#         for param in parameters:
-#             if param.pff:
-#                 ff_params.append(param)
-#             else:
-#                 other_params.append(param)
-#
-#         if not ff_params:
-#             raise EMAError("no parameters for full factorial sampling")
-#         if not other_params:
-#             raise EMAError("no parameters for normal sampling")
-#
-#         return ff_params, other_params
-#
-#     def generate_designs(self, parameters, nr_samples):
-#         """external interface to sampler. Returns the computational experiments
-#         over the specified parameters, for the given number of samples for each
-#         parameter.
-#
-#         Parameters
-#         ----------
-#         parameters : list
-#                         a list of parameters for which to generate the
-#                         experimental designs
-#         nr_samples : int
-#                      the number of samples to draw for each parameter
-#
-#         Returns
-#         -------
-#         generator
-#             a generator object that yields the designs resulting from
-#             combining the parameters
-#         int
-#             the number of experimental designs
-#
-#         """
-#
-#         ff_params, other_params = self._sort_parameters(parameters)
-#
-#         # generate a design over the factorials
-#         # TODO update ff to use resolution if present
-#         ff_designs = self.ff.generate_designs(ff_params, nr_samples)
-#
-#         # generate a design over the remainder
-#         # for each factorial, run the MC design
-#         other_designs = self.sampler.generate_designs(other_params,
-#                                                       nr_samples)
-#
-#         nr_designs = other_designs.n * ff_designs.n
-#
-#         designs = PartialFactorialDesigns(ff_designs, other_designs,
-#                                           ff_params + other_params, nr_designs)
-#
-#         return designs
 
 
 def determine_parameters(models, attribute, union=True):
@@ -559,40 +412,6 @@ def sample_uncertainties(models, n_samples, union=True, sampler=LHSSampler()):
     return sample_parameters(uncertainties, n_samples, sampler, Policy)
 
 
-# def sample_jointly(models, n_samples, uncertainty_union=True, lever_union=True,
-#                    sampler=LHSSampler()):
-#     """generate scenarios by sampling over the uncertainties
-#
-#     Parameters
-#     ----------
-#     models : a collection of AbstractModel instances
-#     n_samples : int
-#     uncertainty_union : bool, optional
-#             in case of multiple models, sample over the union of
-#             uncertainties, or over the intersection of the uncertainties
-#     lever_union : bool, optional
-#             in case of multiple models, sample over the union of
-#             levers, or over the intersection of the levers
-#     sampler : Sampler instance, optional
-#
-#     Returns
-#     -------
-#     generator
-#         yielding Scenario instances
-#     collection
-#         the collection of parameters over which to sample
-#     n_samples
-#         the number of designs
-#     """
-#     uncertainties = determine_parameters(models, 'uncertainties',
-#                                          union=uncertainty_union)
-#     levers = determine_parameters(models, 'levers', union=lever_union)
-#     parameters = uncertainties.copy() + levers.copy()
-#
-#     samples = sampler.generate_designs(parameters, n_samples)
-#     samples.kind = Scenario
-#
-#     return samples
 
 
 def from_experiments(models, experiments):
@@ -647,59 +466,8 @@ class DefaultDesigns:
         return f"ema_workbench.DefaultDesigns, {self.n} designs on {len(self.params)} parameters"
 
 
-# class PartialFactorialDesigns(object):
-#
-#     @property
-#     def kind(self):
-#         return self._kind
-#
-#     @kind.setter
-#     def kind(self, value):
-#         self._kind = value
-#         self.ff_designs.kind = value
-#         self.other_designs.kind = value
-#
-#     def __init__(self, ff_designs, other_designs, parameters, n):
-#         self.ff_designs = ff_designs
-#         self.other_designs = other_designs
-#
-#         self.parameters = parameters
-#         self.params = [p.name for p in parameters]
-#
-#         self._kind = None
-#         self.n = n
-#
-#     def __iter__(self):
-#         designs = itertools.product(self.ff_designs, self.other_designs)
-#         return partial_designs_generator(designs)
 
 
-# def partial_designs_generator(designs):
-#     """generator which combines the full factorial part of the design
-#     with the non full factorial part into a single dict
-#
-#     Parameters
-#     ----------
-#     designs: iterable of tuples
-#
-#     Yields
-#     ------
-#     dict
-#         experimental design dict
-#
-#     """
-#
-#     for design in designs:
-#         try:
-#             ff_part, other_part = design
-#         except ValueError:
-#             ff_part = design
-#             other_part = {}
-#
-#         design = ff_part.copy()
-#         design.update(other_part)
-#
-#         yield design
 
 
 def design_generator(designs, params, kind):

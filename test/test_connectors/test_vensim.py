@@ -48,7 +48,6 @@ class LookupTestModel(VensimModel):
         self.model_file = r"\lookup_model.vpm"
         super().__init__(working_directory, name)
 
-        # vensim.load_model(self.modelFile)
         self.outcomes = [TimeSeriesOutcome("flow1")]
 
         """
@@ -65,15 +64,11 @@ class LookupTestModel(VensimModel):
                 2,
             )
         )
-        # self.uncertainties.pop()
         self.uncertainties.append(
             LookupUncertainty(
                 "approximation", [(0, 4), (1, 5), (1, 5), (0, 2), (0, 2)], "TF2", self, 0, 10
             )
         )
-        # self.uncertainties.pop()
-        # self.uncertainties.append(ParameterUncertainty((0.02, 0.08), "rate1"))
-        # self.uncertainties.append(ParameterUncertainty((0.02, 0.08), "rate2"))
         self.uncertainties.append(
             LookupUncertainty(
                 "categories",
@@ -88,7 +83,6 @@ class LookupTestModel(VensimModel):
                 2,
             )
         )
-        # self.uncertainties.pop()
         self._delete_lookup_uncertainties()
 
 
@@ -207,7 +201,6 @@ class LookupUncertaintyTest(unittest.TestCase):
 
         model = LookupTestModel(r"../models/", "lookupTestModel")
 
-        # model.step = 4 #reduce data to be stored
         perform_experiments(model, 10)
 
 

@@ -20,7 +20,6 @@ from ema_workbench.analysis.plotting_util import (
 from test import utilities
 from ema_workbench.util.ema_exceptions import EMAError
 
-# from ema_workbench.em_framework.outcomes import ScalarOutcome, ArrayOutcome
 
 
 # don't run these tests using nosetest
@@ -531,14 +530,7 @@ class TestPlotting(unittest.TestCase):
 
 if __name__ == "__main__":
     suite = unittest.TestSuite()
-    # suite.addTest(TestPlotting("test_make_continuous_grouping_specifiers"))
-    # suite.addTest(TestPlotting("test_filter_scalar_outcomes"))
-    # suite.addTest(TestPlotting("test_group_results"))
     suite.addTest(TestPlotting("test_lines"))
-    # suite.addTest(TestPlotting("test_envelopes"))
-    # suite.addTest(TestPlotting("test_kde_over_time"))
-    # suite.addTest(TestPlotting("test_multiple_densities"))
     runner = unittest.TextTestRunner()
     runner.run(suite)
 
-    # unittest.main()

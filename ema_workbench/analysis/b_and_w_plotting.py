@@ -231,7 +231,6 @@ def _set_ax_pathcollection_to_bw(collection, ax, style, colormap):
 
 _collection_converter = {
     PathCollection.__name__: _set_ax_pathcollection_to_bw,
-    # @UndefinedVariable
     PolyCollection.__name__: _set_ax_polycollection_to_bw,
 }  # @UndefinedVariable
 

@@ -379,10 +379,6 @@ def get_feature_scores_all(x, y, alg="extra trees", mode=RuleInductionType.REGRE
 
         fs = fs.rename(columns={1: key})
         complete.append(fs)
-        # if complete is None:
-        #     complete = fs.T
-        # else:
-        #     complete = complete.append(fs.T, sort=True)
     complete = pd.concat(complete, sort=True, axis=1)
 
     return complete

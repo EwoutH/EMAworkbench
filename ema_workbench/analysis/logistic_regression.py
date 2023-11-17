@@ -101,10 +101,6 @@ def contours(ax, model, xlabel, ylabel, levels):
     z = model.predict(X)
     Zgrid = np.reshape(z.values, Xgrid.shape)
 
-    # rgb = [255*entry for entry in sns.color_palette()[0]]
-    # hsl = 244, 80.9, 39
-    # rgb = [255*entry for entry in sns.color_palette()[1]]
-    # hsl = 28, 100, 52.7
 
     cmap = sns.diverging_palette(244, 28, s=99.9, l=52.7, n=len(levels) - 1, as_cmap=True)
     ax.contourf(Xgrid, Ygrid, Zgrid, levels, cmap=cmap, zorder=0)
@@ -163,7 +159,6 @@ class Logit:
 
     def __init__(self, x, y, threshold=0.95):
         try:
-            # x = x.drop(["scenario"], axis=1)
             columns_to_drop = ["scenario"]
             for entry in ["model", "policy"]:
                 if x[entry].unique().shape[0] == 1:
@@ -273,7 +268,6 @@ class Logit:
         """
         return sdutil.plot_tradeoff(self.peeling_trajectory, cmap=cmap, annotated=annotated)
 
-    # @UndefinedVariable
     def show_threshold_tradeoff(self, i, cmap=mpl.cm.viridis_r, step=0.1):
         """Visualize the trade off between coverage and density for a given
         model i across the range of threshold values

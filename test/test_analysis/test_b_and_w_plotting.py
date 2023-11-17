@@ -106,4 +106,3 @@ if __name__ == "__main__":
     test_fill_between()
     test_fig_legend()
     test_lines()
-#     plt.show()

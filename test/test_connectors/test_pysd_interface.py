@@ -80,7 +80,6 @@ class TestPySDConnector(unittest.TestCase):
 
         relative_path_to_file = "../models/Sales_Agent_Market_Building_Dynamics.mdl"
         mdl_file = os.path.join(directory, relative_path_to_file)
-        #         mdl_file = os.path.abspath(relative_path_to_file)
 
         market_model = PysdModel(mdl_file=mdl_file)
         market_model.uncertainties = [

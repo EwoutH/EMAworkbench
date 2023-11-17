@@ -7,7 +7,6 @@ import tqdm
 
 from ..util import EMAError
 
-# from .parameters import Parameter
 
 # Created on Jul 16, 2016
 #

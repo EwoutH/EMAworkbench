@@ -31,6 +31,5 @@ from .em_framework import (
 )
 from .util import save_results, load_results, ema_logging, EMAError, process_replications
 
-# from . import analysis
 
 __version__ = "2.5.0-dev"
