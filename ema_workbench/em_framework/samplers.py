@@ -156,7 +156,7 @@ class LHSSampler(AbstractSampler):
         # corner case fix (try siz=49)
         # is not a proper fix, it means that perc is wrong
         # so your intervals are wrong
-        samples = samples[np.isnan(samples) == False]
+        samples = samples[np.isnan(samples) is False]
 
         return samples
 
