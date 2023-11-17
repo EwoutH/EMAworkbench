@@ -25,7 +25,6 @@ from ema_workbench.em_framework import get_SALib_problem, sample_parameters
 from ema_workbench.em_framework import SobolSampler
 
 
-
 def get_antropogenic_release(xt, c1, c2, r1, r2, w1):
     """
 

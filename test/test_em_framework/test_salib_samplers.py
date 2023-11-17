@@ -98,7 +98,6 @@ class SamplerTestCase(unittest.TestCase):
         self.assertEqual(len(uncertainties), problem["num_vars"])
         self.assertEqual([u.name for u in uncertainties], problem["names"])
 
-
         self.assertEqual((0, 10), problem["bounds"][0])
         self.assertEqual((0, 5), problem["bounds"][1])
         self.assertEqual((0, 4 + 1), problem["bounds"][2])  # because flooring

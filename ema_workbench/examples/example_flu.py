@@ -166,7 +166,6 @@ def flu_model(
             infected_fraction_region_2 ** (1 / root_contact_rate_region_2)
         )
 
-
         normal_contact_rate_region_1 = float(x101) * (
             1 - LookupFunctionX(infected_fraction_region_1, 0, 1, 0.15, 0.75, 15)
         )

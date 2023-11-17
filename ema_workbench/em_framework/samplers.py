@@ -190,8 +190,6 @@ class UniformLHSSampler(LHSSampler):
         return samples
 
 
-
-
 class MonteCarloSampler(AbstractSampler):
     """
     generates a Monte Carlo sample for each of the parameters.
@@ -318,8 +316,6 @@ class FullFactorialSampler(AbstractSampler):
         return nr_designs
 
 
-
-
 def determine_parameters(models, attribute, union=True):
     """determine the parameters over which to sample
 
@@ -412,8 +408,6 @@ def sample_uncertainties(models, n_samples, union=True, sampler=LHSSampler()):
     return sample_parameters(uncertainties, n_samples, sampler, Policy)
 
 
-
-
 def from_experiments(models, experiments):
     """generate scenarios from an existing experiments DataFrame
 
@@ -464,10 +458,6 @@ class DefaultDesigns:
 
     def __str__(self):
         return f"ema_workbench.DefaultDesigns, {self.n} designs on {len(self.params)} parameters"
-
-
-
-
 
 
 def design_generator(designs, params, kind):

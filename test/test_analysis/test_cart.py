@@ -168,8 +168,5 @@ class CartTestCase(unittest.TestCase):
         self.assertTrue(isinstance(alg.clf, cart.tree.DecisionTreeRegressor))
 
 
-
-
 if __name__ == "__main__":
     unittest.main()
-

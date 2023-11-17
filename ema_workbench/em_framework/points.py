@@ -55,7 +55,6 @@ class Policy(Point):
     def __init__(self, name=None, **kwargs):
         super().__init__(name, Policy.id_counter(), **kwargs)
 
-
     def __repr__(self):
         return f"Policy({super(Policy, self).__repr__()})"
 
@@ -196,8 +195,6 @@ def combine_cases_factorial(*point_collections):
 
     for entry in combined_cases:
         yield Point(**ChainMap(*entry))
-
-
 
 
 def experiment_generator(scenarios, model_structures, policies, combine="factorial"):

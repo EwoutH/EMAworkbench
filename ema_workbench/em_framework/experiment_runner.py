@@ -98,7 +98,6 @@ class ExperimentRunner:
             except Exception:
                 raise e
 
-
             errortype = type(e).__name__
             raise EMAError(f"Exception in run_model\nCaused by: {errortype}: {str(e)}")
 

@@ -249,7 +249,6 @@ class BaseNetLogoModel(FileModel):
         except AttributeError:
             pass
 
-
     def _handle_outcomes(self, fns):
         """helper function for parsing outcomes"""
 

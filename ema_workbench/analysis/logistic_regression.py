@@ -101,7 +101,6 @@ def contours(ax, model, xlabel, ylabel, levels):
     z = model.predict(X)
     Zgrid = np.reshape(z.values, Xgrid.shape)
 
-
     cmap = sns.diverging_palette(244, 28, s=99.9, l=52.7, n=len(levels) - 1, as_cmap=True)
     ax.contourf(Xgrid, Ygrid, Zgrid, levels, cmap=cmap, zorder=0)
 

@@ -177,7 +177,6 @@ def plot_boxplots(ax, values, log, group_labels=None):
 
     """
 
-
     if log:
         _logger.warning("log option ignored for boxplot")
     if not group_labels:

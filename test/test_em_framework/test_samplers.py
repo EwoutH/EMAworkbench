@@ -54,7 +54,6 @@ class SamplerTestCase(unittest.TestCase):
         sampler = FullFactorialSampler()
         self._test_generate_designs(sampler)
 
-
     def test_determine_parameters(self):
         function = mock.Mock()
         model_a = Model("A", function)
@@ -80,7 +79,6 @@ class SamplerTestCase(unittest.TestCase):
         self.assertIn("b", parameters.keys())
         self.assertNotIn("c", parameters.keys())
         self.assertNotIn("a", parameters.keys())
-
 
 
 if __name__ == "__main__":

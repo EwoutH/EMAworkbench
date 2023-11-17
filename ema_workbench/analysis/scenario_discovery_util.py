@@ -88,7 +88,6 @@ def _make_box(x):
 
     """
 
-
     def limits(x):
         if pd.api.types.is_numeric_dtype(x.dtype):  # @UndefinedVariable
             return pd.Series([x.min(), x.max()])

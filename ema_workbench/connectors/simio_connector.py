@@ -208,7 +208,6 @@ class SimioModel(FileModel, SingleReplication):
     def scenario_ended(self, sender, scenario_ended_event):
         """scenario ended event handler"""
 
-
         # This event handler will be called when all replications for a
         # given scenario have completed.  At this point the statistics
         # produced by this scenario should be available.
@@ -222,7 +221,6 @@ class SimioModel(FileModel, SingleReplication):
         responses = experiment.Scenarios.get_Responses()
 
         # http://stackoverflow.com/questions/16484167/python-net-framework-reference-argument-double
-
 
         for response in responses:
             _logger.debug(f"{response}")

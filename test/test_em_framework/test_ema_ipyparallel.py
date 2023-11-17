@@ -142,8 +142,6 @@ def tearDownModule():
                 print("couldn't shutdown process: ", p)
 
 
-
-
 class TestEngineLoggerAdapter(unittest.TestCase):
     def tearDown(self):
         ema_logging._logger = None
@@ -196,10 +194,6 @@ class TestEngineLoggerAdapter(unittest.TestCase):
         logger = ema_logging._logger
         mocked_logger.setLevel.assert_called_once_with(ema_logging.DEBUG)
         mocked_adapter.assert_called_with(mocked_logger, ema.SUBTOPIC)
-
-
-
-
 
 
 class TestLogWatcher(unittest.TestCase):
@@ -279,7 +273,6 @@ class TestEngine(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.client = ipyparallel.Client(profile="default")
-
 
     @classmethod
     def tearDownClass(cls):

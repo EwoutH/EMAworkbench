@@ -206,6 +206,5 @@ class TestReplicatorModel(unittest.TestCase):
         self.assertEqual({"outcome": [2, 2]}, model.outcomes_output)
 
 
-
 if __name__ == "__main__":
     unittest.main()

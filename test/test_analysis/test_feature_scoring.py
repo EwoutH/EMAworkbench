@@ -193,4 +193,3 @@ class FeatureScoringTestCase(unittest.TestCase):
 if __name__ == "__main__":
     ema_logging.log_to_stderr(ema_logging.INFO)
     unittest.main()
-

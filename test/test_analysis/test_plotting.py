@@ -21,7 +21,6 @@ from test import utilities
 from ema_workbench.util.ema_exceptions import EMAError
 
 
-
 # don't run these tests using nosetest
 # __test__ = False
 
@@ -533,4 +532,3 @@ if __name__ == "__main__":
     suite.addTest(TestPlotting("test_lines"))
     runner = unittest.TextTestRunner()
     runner.run(suite)
-
