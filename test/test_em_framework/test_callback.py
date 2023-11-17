@@ -43,7 +43,7 @@ def test_store_results(mocker):
 
     _, out = callback.get_results()
 
-    assert outcomes[0].name in set(out.keys())
+    assert outcomes[0].name in set(out)
     assert out[outcomes[0].name].shape == (3,)
 
     # case 2 time series shape = (1, nr_time_steps)
@@ -52,7 +52,7 @@ def test_store_results(mocker):
     callback(experiment, model_outcomes)
 
     _, out = callback.get_results()
-    assert outcomes[0].name in out.keys()
+    assert outcomes[0].name in out
     assert out[outcomes[0].name].shape == (3, 10)
 
     # case 3 maps etc. shape = (x,y)
@@ -61,7 +61,7 @@ def test_store_results(mocker):
     callback(experiment, model_outcomes)
 
     _, out = callback.get_results()
-    assert outcomes[0].name in out.keys()
+    assert outcomes[0].name in out
     assert out[outcomes[0].name].shape == (3, 2, 2)
 
     # case 4 assert raises EMAError
@@ -301,8 +301,8 @@ def test_filebasedcallback(mocker):
 
     # we should have opened 3 files: experiments and 2 outcome files
     assert mock_open.call_count == 3
-    assert "other" in callback.outcome_fhs.keys()
-    assert "time" in callback.outcome_fhs.keys()
+    assert "other" in callback.outcome_fhs
+    assert "time" in callback.outcome_fhs
 
     callback(experiment, {"other": 1, "time": [1, 2, 3, 4]})
 
