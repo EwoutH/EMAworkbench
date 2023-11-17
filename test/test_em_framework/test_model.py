@@ -12,7 +12,7 @@ from ema_workbench.em_framework.model import Model, FileModel, ReplicatorModel
 from ema_workbench.em_framework.parameters import RealParameter, Category, CategoricalParameter
 from ema_workbench.em_framework.points import Scenario, Policy
 from ema_workbench.util import EMAError
-from ema_workbench.em_framework.outcomes import ScalarOutcome, ArrayOutcome
+from ema_workbench.em_framework.outcomes import ArrayOutcome
 
 
 class FileModelTest(FileModel):

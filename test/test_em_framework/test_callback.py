@@ -9,8 +9,6 @@ import pandas as pd
 import pytest
 
 import numpy as np
-
-import ema_workbench.em_framework.callbacks as callbacks
 from ema_workbench.em_framework.callbacks import DefaultCallback, FileBasedCallback
 from ema_workbench.em_framework.parameters import (
     CategoricalParameter,

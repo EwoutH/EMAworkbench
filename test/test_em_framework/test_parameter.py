@@ -8,10 +8,6 @@ import unittest.mock as mock
 import scipy as sp
 
 from ema_workbench.em_framework import parameters
-from ema_workbench.em_framework.points import Scenario, Policy
-from ema_workbench.em_framework.samplers import LHSSampler
-from ema_workbench.em_framework.model import Model
-from ema_workbench.em_framework.util import NamedObject
 
 
 class RealParameterTestCase(unittest.TestCase):

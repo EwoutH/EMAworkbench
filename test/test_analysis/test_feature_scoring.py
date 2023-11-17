@@ -16,8 +16,6 @@ from ema_workbench.analysis.feature_scoring import F_CLASSIFICATION, CHI2, F_REG
 from ema_workbench.analysis.scenario_discovery_util import RuleInductionType
 from ema_workbench.util import ema_logging
 
-from ema_workbench import ScalarOutcome
-
 from test import utilities
 
 
