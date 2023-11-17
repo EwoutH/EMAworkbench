@@ -45,7 +45,7 @@ def lake_problem(
 
     # Generate natural inflows using lognormal distribution
     natural_inflows = np.random.lognormal(
-        mean=math.log(mean**2 / math.sqrt(stdev**2 + mean**2)),
+        mean=math.log(mean**2 / math.hypot(stdev**2 + mean**2)),
         sigma=math.sqrt(math.log(1.0 + stdev**2 / mean**2)),
         size=(nsamples, nvars),
     )

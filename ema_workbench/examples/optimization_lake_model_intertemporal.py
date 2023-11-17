@@ -246,7 +246,7 @@ def lake_problem(
         X[0] = 0.0
 
         natural_inflows = np.random.lognormal(
-            math.log(mean**2 / math.sqrt(stdev**2 + mean**2)),
+            math.log(mean**2 / math.hypot(stdev**2 + mean**2)),
             math.sqrt(math.log(1.0 + stdev**2 / mean**2)),
             size=nvars,
         )
