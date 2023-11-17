@@ -21,10 +21,10 @@ _logger = get_module_logger(__name__)
 def pairs_lines(
     experiments,
     outcomes,
-    outcomes_to_show=[],
+    outcomes_to_show=None,
     group_by=None,
     grouping_specifiers=None,
-    ylabels={},
+    ylabels=None,
     legend=True,
     **kwargs,
 ):
@@ -71,6 +71,10 @@ def pairs_lines(
         instance
 
     """
+    if outcomes_to_show is None:
+        outcomes_to_show = []
+    if ylabels is None:
+        ylabels = {}
 
     # unravel return from run_experiments
     _logger.debug("making a pairwise line plot")
@@ -148,10 +152,10 @@ def simple_pairs_lines(ax, y_data, x_data, color):
 def pairs_density(
     experiments,
     outcomes,
-    outcomes_to_show=[],
+    outcomes_to_show=None,
     group_by=None,
     grouping_specifiers=None,
-    ylabels={},
+    ylabels=None,
     point_in_time=-1,
     log=True,
     gridsize=50,
@@ -213,6 +217,10 @@ def pairs_density(
         instance
 
     """
+    if outcomes_to_show is None:
+        outcomes_to_show = []
+    if ylabels is None:
+        ylabels = {}
     _logger.debug("generating pairwise density plot")
 
     prepared_data = prepare_pairs_data(
@@ -382,10 +390,10 @@ def simple_pairs_density(
 def pairs_scatter(
     experiments,
     outcomes,
-    outcomes_to_show=[],
+    outcomes_to_show=None,
     group_by=None,
     grouping_specifiers=None,
-    ylabels={},
+    ylabels=None,
     legend=True,
     point_in_time=-1,
     filter_scalar=False,
@@ -439,6 +447,10 @@ def pairs_scatter(
               in COLOR_LIST.
 
     """
+    if outcomes_to_show is None:
+        outcomes_to_show = []
+    if ylabels is None:
+        ylabels = {}
 
     _logger.debug("generating pairwise scatter plot")
 

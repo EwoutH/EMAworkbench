@@ -237,7 +237,7 @@ def _in_box(x, boxlim):
     return logical
 
 
-def _setup(results, classify, incl_unc=[]):
+def _setup(results, classify, incl_unc=None):
     """helper function for setting up CART or PRIM
 
     Parameters
@@ -260,6 +260,8 @@ def _setup(results, classify, incl_unc=[]):
         if classify is not a string or a callable.
 
     """
+    if incl_unc is None:
+        incl_unc = []
     x, outcomes = results
 
     if incl_unc:

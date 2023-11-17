@@ -43,8 +43,8 @@ def envelopes(
     density=None,
     fill=False,
     legend=True,
-    titles={},
-    ylabels={},
+    titles=None,
+    ylabels=None,
     log=False,
 ):
     """Make envelop plots.
@@ -118,6 +118,10 @@ def envelopes(
     associated with \'no policy\'.
 
     """
+    if titles is None:
+        titles = {}
+    if ylabels is None:
+        ylabels = {}
     _logger.debug("generating envelopes")
     prepared_data = prepare_data(
         experiments,
@@ -248,13 +252,13 @@ def single_envelope(outcomes, outcome_to_plot, time, density, ax, ax_d, fill, lo
 def lines(
     experiments,
     outcomes,
-    outcomes_to_show=[],
+    outcomes_to_show=None,
     group_by=None,
     grouping_specifiers=None,
     density="",
     legend=True,
-    titles={},
-    ylabels={},
+    titles=None,
+    ylabels=None,
     experiments_to_show=None,
     show_envelope=False,
     log=False,
@@ -319,6 +323,12 @@ def lines(
     specified in COLOR_LIST.
 
     """
+    if outcomes_to_show is None:
+        outcomes_to_show = []
+    if titles is None:
+        titles = {}
+    if ylabels is None:
+        ylabels = {}
 
     _logger.debug("generating line graph")
 
@@ -384,13 +394,13 @@ def lines(
 def plot_lines_with_envelopes(
     experiments,
     outcomes,
-    outcomes_to_show=[],
+    outcomes_to_show=None,
     group_by=None,
     grouping_specifiers=None,
     density="",
     legend=True,
-    titles={},
-    ylabels={},
+    titles=None,
+    ylabels=None,
     experiments_to_show=None,
     log=False,
 ):
@@ -443,6 +453,12 @@ def plot_lines_with_envelopes(
         dict with outcome as key, and axes as value. Density axes' are
         indexed by the outcome followed by _density
     """
+    if outcomes_to_show is None:
+        outcomes_to_show = []
+    if titles is None:
+        titles = {}
+    if ylabels is None:
+        ylabels = {}
     full_outcomes = prepare_data(
         experiments, None, outcomes, outcomes_to_show, group_by, grouping_specifiers
     )[1]
@@ -653,8 +669,8 @@ def multiple_densities(
     grouping_specifiers=None,
     density=Density.KDE,
     legend=True,
-    titles={},
-    ylabels={},
+    titles=None,
+    ylabels=None,
     experiments_to_show=None,
     plot_type=PlotType.ENVELOPE,
     log=False,
@@ -724,6 +740,10 @@ def multiple_densities(
     itself.
 
     """
+    if titles is None:
+        titles = {}
+    if ylabels is None:
+        ylabels = {}
     if not outcomes_to_show:
         outcomes_to_show = [k for k, v in outcomes.items() if v.ndim == 2]
         outcomes_to_show.remove(TIME)

@@ -74,7 +74,7 @@ class BaseNetLogoModel(FileModel):
         netlogo_home=None,
         jvm_path=None,
         gui=False,
-        jvm_args=[],
+        jvm_args=None,
     ):
         """
         init of class
@@ -107,6 +107,8 @@ class BaseNetLogoModel(FileModel):
         separate working directory prior to calling `model_init`.
 
         """
+        if jvm_args is None:
+            jvm_args = []
         super().__init__(name, wd=wd, model_file=model_file)
 
         self.run_length = None

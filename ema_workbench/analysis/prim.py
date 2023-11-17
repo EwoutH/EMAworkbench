@@ -67,7 +67,7 @@ BELOW = -1
 PRECISION = ".2f"
 
 
-def pca_preprocess(experiments, y, subsets=None, exclude=set()):
+def pca_preprocess(experiments, y, subsets=None, exclude=None):
     """perform PCA to preprocess experiments before running PRIM
 
     Pre-process the data by performing a pca based rotation on it.
@@ -101,6 +101,8 @@ def pca_preprocess(experiments, y, subsets=None, exclude=set()):
 
 
     """
+    if exclude is None:
+        exclude = set()
     # experiments to rotate
     x = experiments.drop(exclude, axis=1)
 
@@ -268,7 +270,7 @@ def run_constrained_prim(experiments, y, issignificant=True, **kwargs):
     return box
 
 
-def setup_prim(results, classify, threshold, incl_unc=[], **kwargs):
+def setup_prim(results, classify, threshold, incl_unc=None, **kwargs):
     """Helper function for setting up the prim algorithm
 
     Parameters
@@ -299,6 +301,8 @@ def setup_prim(results, classify, threshold, incl_unc=[], **kwargs):
     TypeError
         if classify is not a string or a callable.
     """
+    if incl_unc is None:
+        incl_unc = []
 
     x, y, mode = sdutil._setup(results, classify, incl_unc)
 
