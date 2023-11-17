@@ -618,8 +618,8 @@ class LookupUncertainty(Parameter):
             else:
                 df.append(l + m - ((m + l - u) * (i - p) / (self.x_min - p)))
         new_lookup = []
-        for i in range(len(self.x)):
-            new_lookup.append((self.x[i], max(min(df[i] * self.y[i], self.y_max), self.y_min)))
+        for i, item in enumerate(self.x):
+            new_lookup.append((item, max(min(df[i] * self.y[i], self.y_max), self.y_min)))
         return new_lookup
 
     def _hearne2(self, case):
@@ -643,8 +643,8 @@ class LookupUncertainty(Parameter):
                 else:
                     df.append(u + m2 - (m2 * (i - p2) / (self.x_max - p2)))
         new_lookup = []
-        for i in range(len(self.x)):
-            new_lookup.append((self.x[i], max(min(df[i] * self.y[i], self.y_max), self.y_min)))
+        for i, item in enumerate(self.x):
+            new_lookup.append((item, max(min(df[i] * self.y[i], self.y_max), self.y_min)))
         return new_lookup
 
     def _approx(self, case):
