@@ -145,8 +145,8 @@ class PrimBoxTestCase(unittest.TestCase):
         for entry in names:
             lim_correct = correct_box_lims[entry]
             lim_box = box_lims[entry]
-            for i in range(len(lim_correct)):
-                self.assertEqual(lim_correct[i], lim_box[i])
+            for i, item in enumerate(lim_correct):
+                self.assertEqual(item, lim_box[i])
 
         self.assertEqual(box.peeling_trajectory["mean"][2], 1)
         self.assertEqual(box.peeling_trajectory["coverage"][2], 1)

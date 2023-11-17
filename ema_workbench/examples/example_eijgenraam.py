@@ -149,8 +149,8 @@ def eijgenraam_model(
     # calculate investment
     investment = 0
 
-    for i in range(len(Xs)):
-        step_cost = exponential_investment_cost(Xs[i], 0 if i == 0 else sum(Xs[:i]), c, b, lam)
+    for i, item in enumerate(Xs):
+        step_cost = exponential_investment_cost(item, 0 if i == 0 else sum(Xs[:i]), c, b, lam)
         step_discount = math.exp(-delta * Ts[i])
         investment += step_cost * step_discount
 
