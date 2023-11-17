@@ -1,4 +1,3 @@
-import numpy as np
 import matplotlib.pyplot as plt
 
 from analysis.pairs_plotting import pairs_lines

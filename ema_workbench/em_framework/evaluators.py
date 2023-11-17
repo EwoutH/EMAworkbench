@@ -13,7 +13,6 @@ import string
 import sys
 import threading
 import warnings
-import logging
 
 from ema_workbench.em_framework.samplers import AbstractSampler
 from .callbacks import DefaultCallback

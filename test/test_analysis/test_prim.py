@@ -13,7 +13,6 @@ from ema_workbench.analysis import prim
 from ema_workbench.analysis.prim import PrimBox
 from test import utilities
 from ema_workbench.analysis.scenario_discovery_util import RuleInductionType
-from ema_workbench.em_framework.outcomes import ScalarOutcome
 
 
 def flu_classify(data):
